@@ -1,0 +1,2 @@
+# SimpleGridLayout
+可根据自定义的列数自动平分排列items并且自动换行
