@@ -7,7 +7,7 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SimpleGridLayoutAdapter implements SimpleGridLayout.ISimpleGridLayoutAdapter {
+public class SimpleGridLayoutAdapter extends SimpleGridLayout.SimpleGridLayoutAdapter {
 
     private List<String> strings;
 

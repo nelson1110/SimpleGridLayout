@@ -10,7 +10,7 @@ import java.util.List;
 
 public class SimpleGridLayout extends LinearLayout {
 
-    private ISimpleGridLayoutAdapter mAdapter;
+    private SimpleGridLayoutAdapter mAdapter;
 
     public SimpleGridLayout(Context context) {
         this(context,null);
@@ -27,6 +27,7 @@ public class SimpleGridLayout extends LinearLayout {
     }
 
     private void layoutViews(){
+        removeAllViews();
         if(mAdapter == null){
             return;
         }
@@ -56,7 +57,7 @@ public class SimpleGridLayout extends LinearLayout {
 
 
             for (View view : itemViews) {
-                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(0,
+                LayoutParams layoutParams = new LayoutParams(0,
                         ViewGroup.LayoutParams.WRAP_CONTENT, mAdapter.getItemWeight(allViews.indexOf(view)));
                 view.setLayoutParams(layoutParams);
                 linearLayout.addView(view);
@@ -66,27 +67,39 @@ public class SimpleGridLayout extends LinearLayout {
 
         }
 
-
-
-    }
-
-    public void setAdapter(ISimpleGridLayoutAdapter adapter){
-        mAdapter = adapter;
-        layoutViews();
         invalidate();
+
+    }
+
+    public void setAdapter(SimpleGridLayoutAdapter adapter){
+        mAdapter = adapter;
+        adapter.attachToSimpleGridLayout(this);
+        layoutViews();
+
     }
 
 
 
-    public interface ISimpleGridLayoutAdapter{
 
-        int getItemColumns();
+    public static abstract class SimpleGridLayoutAdapter {
 
-        List<View> getItemViews(Context context);
+        private SimpleGridLayout instance;
 
-        int getItemWeight(int position);
+        void attachToSimpleGridLayout(SimpleGridLayout gridLayout){
+            this.instance = gridLayout;
+        }
 
+        public abstract int getItemColumns();
+
+        public abstract List<View> getItemViews(Context context);
+
+        public abstract int getItemWeight(int position);
+
+        public void notifyDataSetChanged(){
+            instance.layoutViews();
+        }
     }
+
 
 
 
