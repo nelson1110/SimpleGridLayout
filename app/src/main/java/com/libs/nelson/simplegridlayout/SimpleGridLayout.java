@@ -93,7 +93,9 @@ public class SimpleGridLayout extends LinearLayout {
 
         public abstract List<View> getItemViews(Context context);
 
-        public abstract int getItemWeight(int position);
+        public int getItemWeight(int position){
+            return 1;
+        }
 
         public void notifyDataSetChanged(){
             instance.layoutViews();

@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
             list.add("adsfadsf")
         }
 
-        val adapter = SampleGridLayoutAdapter(list)
+        val adapter = SimpleGridLayoutAdapter(list)
         grid.setAdapter(adapter)
     }
 }

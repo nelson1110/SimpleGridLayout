@@ -34,7 +34,6 @@ public class SimpleGridLayoutAdapter extends SimpleGridLayout.SimpleGridLayoutAd
 
     @Override
     public int getItemWeight(int position) {
-
         return 1;
     }
 }
