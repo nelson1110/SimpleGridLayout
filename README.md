@@ -2,7 +2,9 @@
 用途：根据指定的列数对子view们按顺序布局
 
 ## 最基本的效果图，更多骚操作可以在item上做文章
-![Alt text](images/screenshot.png "基本功能"){:height="50%" width="50%"}
+![Alt text](images/screenshot.png "基本功能")
+
+<img src="images/screenshot.png" width="50%" height="50%" />
 
 ## 用法
 
